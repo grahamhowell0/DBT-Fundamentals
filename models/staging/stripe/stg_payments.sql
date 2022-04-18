@@ -4,7 +4,7 @@ with payments as (
     status,
     amount/100 as amount,
     cast(created as date) as created
-    from analytics.stripe.payments
+    from {{ source('stripe', 'payments') }}
 )
 
 select * from payments
